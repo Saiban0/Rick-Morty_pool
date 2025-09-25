@@ -24,6 +24,10 @@ window/size/viewport_height=1000
 
 project/assembly_name="New Game Project"
 
+[editor]
+
+version_control/default_gravity_vector=Vector2(0, 0)
+
 [input]
 
 move_up={
