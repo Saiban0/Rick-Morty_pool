@@ -17,3 +17,5 @@ position = Vector2(750, 500)
 script = ExtResource("4_jyhfs")
 
 [node name="Cue" parent="." instance=ExtResource("5_tbgi4")]
+
+[connection signal="shoot" from="Cue" to="." method="_on_cue_shoot"]

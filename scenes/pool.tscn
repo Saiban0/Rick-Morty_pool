@@ -11,6 +11,7 @@ size = Vector2(65, 328)
 [node name="Node2D" type="Node2D"]
 
 [node name="table" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Sprite_table" type="Sprite2D" parent="table"]
@@ -19,7 +20,6 @@ position = Vector2(-45.000004, -83)
 scale = Vector2(6.21875, 5.473958)
 texture = ExtResource("2_rdlcb")
 centered = false
-metadata/_edit_lock_ = true
 
 [node name="Cushions" type="StaticBody2D" parent="table"]
 
