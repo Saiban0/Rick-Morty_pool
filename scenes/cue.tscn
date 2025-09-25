@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://80w516a6krsm"]
+[gd_scene load_steps=3 format=3 uid="uid://80w516a6krsm"]
 
 [ext_resource type="Texture2D" uid="uid://fb7nh0h7l4k1" path="res://assets/cue.png" id="1_nqers"]
+[ext_resource type="Script" uid="uid://soe0euwwhcbc" path="res://scenes/cue.gd" id="2_lreqr"]
 
 [node name="Sprite2D" type="Sprite2D"]
 z_index = 1
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_nqers")
+script = ExtResource("2_lreqr")
