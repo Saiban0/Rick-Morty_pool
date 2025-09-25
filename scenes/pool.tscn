@@ -1,9 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://m7usbwj7n40d"]
+[gd_scene load_steps=4 format=3 uid="uid://m7usbwj7n40d"]
 
-[ext_resource type="Script" uid="uid://d2b0l0e6ygfcg" path="res://scripts/camera_2d.gd" id="1_he5t5"]
 [ext_resource type="Texture2D" uid="uid://cro21yv10n584" path="res://assets/Pool_Table_Type_1_NO_BG Wide.png" id="2_rdlcb"]
-[ext_resource type="Script" uid="uid://0v8bev51bdge" path="res://scripts/balls_manager.gd" id="3_agsh5"]
-[ext_resource type="Script" uid="uid://dle7h0jxskc5h" path="res://ball.gd" id="4_5yltl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bslhr"]
 size = Vector2(427, 344)
@@ -11,15 +8,7 @@ size = Vector2(427, 344)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76ob0"]
 size = Vector2(65, 328)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wtcfe"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
-
 [node name="Node2D" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(750, 500)
-script = ExtResource("1_he5t5")
 
 [node name="table" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -35,7 +24,7 @@ metadata/_edit_lock_ = true
 [node name="Cushions" type="StaticBody2D" parent="table"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="table/Cushions"]
-polygon = PackedVector2Array(131, 75, 105, 51, 106, -263, 716, -263, 715, 51, 708, 76)
+polygon = PackedVector2Array(131, 75, 105, 51, 106, -263, 716, -263, 712, 72, 708, 76)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="table/Cushions"]
 position = Vector2(682, 0)
@@ -80,154 +69,5 @@ position = Vector2(751.5, 852)
 shape = SubResource("RectangleShape2D_76ob0")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="table/Holes"]
-position = Vector2(752, -96)
+position = Vector2(752, -98)
 shape = SubResource("RectangleShape2D_76ob0")
-
-[node name="Balls" type="Node2D" parent="."]
-visible = false
-position = Vector2(576, 375)
-scale = Vector2(25, 25)
-script = ExtResource("3_agsh5")
-
-[node name="ball00" type="Area2D" parent="Balls"]
-position = Vector2(-5, 0)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball00"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball00"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball01" type="Area2D" parent="Balls"]
-position = Vector2(5, 0)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball01"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball01"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball02" type="Area2D" parent="Balls"]
-position = Vector2(6.32, -0.76)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball02"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball02"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball03" type="Area2D" parent="Balls"]
-position = Vector2(6.28, 0.8)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball03"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball03"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball04" type="Area2D" parent="Balls"]
-position = Vector2(7.68, -1.4800001)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball04"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball04"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball05" type="Area2D" parent="Balls"]
-position = Vector2(7.6000004, 0.07999997)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball05"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball05"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball06" type="Area2D" parent="Balls"]
-position = Vector2(7.5999994, 1.5999997)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball06"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball06"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball07" type="Area2D" parent="Balls"]
-position = Vector2(8.879999, 2.3999999)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball07"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball07"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball08" type="Area2D" parent="Balls"]
-position = Vector2(8.92, 0.8799999)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball08"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball08"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball09" type="Area2D" parent="Balls"]
-position = Vector2(9.039999, -2.1599994)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball09"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball09"]
-shape = SubResource("CircleShape2D_0e48y")
-
-[node name="ball10" type="Area2D" parent="Balls"]
-position = Vector2(8.92, -0.6400001)
-scale = Vector2(0.075, 0.075)
-script = ExtResource("4_5yltl")
-metadata/_edit_group_ = true
-
-[node name="ball_sprite" type="Sprite2D" parent="Balls/ball10"]
-scale = Vector2(14.15, 14.15)
-texture = SubResource("PlaceholderTexture2D_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Balls/ball10"]
-shape = SubResource("CircleShape2D_0e48y")

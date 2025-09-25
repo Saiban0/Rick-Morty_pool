@@ -5,7 +5,8 @@ extends Node
 #game variables
 var ball_images := []
 var cue_ball
-const START_POS := Vector2(1152, 384)
+const START_POS := Vector2(1152, 389.1)
+
 
 func _ready():
 	load_images()
@@ -30,10 +31,11 @@ func generate_balls():
 	for i in range(5):
 		for j in range(rows):
 			var ball = ball_scene.instantiate()
+			var x = 256 + i * (diameter * 0.866)  # cos(30°) environ 0.866
 			@warning_ignore("integer_division")
-			var pos = Vector2(256 + (i * (diameter)), 375 + (j * diameter / 2))
+			var y = 325 + j * diameter + i * (diameter / 2)
+			ball.position = Vector2(x, y)
 			add_child(ball)
-			ball.position = pos
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
 			ball_nb += 1
 		rows -= 1
@@ -46,5 +48,12 @@ func reset_cue_ball():
 	cue_ball.get_node("Sprite2D").texture = ball_images[-1]
 
 
+func show_cue():
+	$Cue.position = cue_ball.position
+	var mouse_pos = get_viewport().get_mouse_position()
+	var cue_dir = -(mouse_pos - cue_ball.position)
+	$Cue.rotation = cue_dir.angle()
+
+
 func _process(delta):
-	pass
+	show_cue()
