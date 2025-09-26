@@ -7,6 +7,9 @@ const globals = preload("res://scripts/globals.gd")
 #game variables
 var ball_images := []
 var cue_ball
+#var can_shoot : bool = true
+var movement : bool = false
+var balls_group = Array()
 
 func _ready():
 	load_images()
@@ -32,6 +35,7 @@ func generate_balls():
 			@warning_ignore("integer_division")
 			var y = 325 + j * diameter + i * (diameter / 2)
 			ball.position = Vector2(x, y)
+			ball.add_to_group("balls")
 			add_child(ball)
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
 			ball_nb += 1
@@ -39,15 +43,34 @@ func generate_balls():
 
 func reset_cue_ball():
 	cue_ball = ball_scene.instantiate()
+	cue_ball.add_to_group("balls")
 	add_child(cue_ball)
 	cue_ball.position = globals.START_POS
 	cue_ball.get_node("Sprite2D").texture = ball_images[-1]
+	balls_group = get_tree().get_nodes_in_group("balls")
 
-func show_cue():
-	$Cue.position = cue_ball.position
+func check_ball_movement(array) -> bool:
+	for ball in array:
+		if ball.linear_velocity.length() > 2 || abs(ball.angular_velocity) > 0.1:
+			return (true)
+	return (false)
+
+func update_cue():
+	if (movement):
+		$Cue.hide()
+	else:
+		$Cue.show()
+		$Cue.position = cue_ball.position
 
 func _process(delta):
-	show_cue()
+	#if (check_ball_movement(get_tree().get_nodes_in_group("balls"))):
+		#movement = true
+	##else:
+		##movement = false
+		#can_sh	oot = true
+	movement = check_ball_movement(balls_group)
+	update_cue()
 
 func _on_cue_shoot(power):
 	cue_ball.apply_central_impulse(power)
+	
