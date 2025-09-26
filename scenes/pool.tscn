@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://m7usbwj7n40d"]
+[gd_scene load_steps=5 format=3 uid="uid://m7usbwj7n40d"]
 
+[ext_resource type="Script" uid="uid://drnpd4c3xnmio" path="res://scripts/holes.gd" id="2_c2vhv"]
 [ext_resource type="Texture2D" uid="uid://cro21yv10n584" path="res://assets/Pool_Table_Type_1_NO_BG Wide.png" id="2_rdlcb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bslhr"]
@@ -47,6 +48,7 @@ position = Vector2(677, 940)
 polygon = PackedVector2Array(113, 81, 113, -254, 121, -262, 693, -262, 720, -237, 717, 79)
 
 [node name="Holes" type="Area2D" parent="table"]
+script = ExtResource("2_c2vhv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="table/Holes"]
 position = Vector2(-122.5, -92)
