@@ -44,6 +44,8 @@ full_reset={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
+2d/default_linear_damp=1.25
+2d/default_angular_damp=1.75
 
 [rendering]
 

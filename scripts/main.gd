@@ -67,11 +67,15 @@ func check_ball_movement(array) -> bool:
 func update_cue():
 	if movement || !cue_ball.visible:
 		$Cue.hide()
+		$Power_bar.hide()
 	else:
 		$Cue.show()
 		$Cue.position = cue_ball.position
+		$Power_bar.position.x = cue_ball.position.x - (0.5 * $Power_bar.size.x)
+		$Power_bar.position.y = cue_ball.position.y + $Power_bar.size.y
+		$Power_bar.show()
 
-func _process(delta):
+func _process(_delta):
 	movement = check_ball_movement(balls_group)
 	update_cue()
 	if Input.is_action_just_pressed("reset_cue_ball") && !movement:
