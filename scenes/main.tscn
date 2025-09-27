@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj0vrmwtckgxq"]
+[gd_scene load_steps=9 format=3 uid="uid://cj0vrmwtckgxq"]
 
 [ext_resource type="Script" uid="uid://dvvh451ig8m1l" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b83nfsoi8bk8s" path="res://scenes/pool_ball.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://m7usbwj7n40d" path="res://scenes/pool.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://d2b0l0e6ygfcg" path="res://scripts/camera_2d.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://80w516a6krsm" path="res://scenes/cue.tscn" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://cbmwditbbfy7c" path="res://scripts/power_bar.gd" id="6_tefeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(1, 1, 1, 0.45882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0.972549, 0.1882353, 0.047058824, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_sugp2")
@@ -17,5 +24,17 @@ position = Vector2(750, 500)
 script = ExtResource("4_jyhfs")
 
 [node name="Cue" parent="." instance=ExtResource("5_tbgi4")]
+z_index = 2
+
+[node name="Power_bar" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = 120.0
+offset_top = 88.0
+offset_right = 270.0
+offset_bottom = 108.0
+theme_override_styles/background = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tipki")
+show_percentage = false
+script = ExtResource("6_tefeu")
 
 [connection signal="shoot" from="Cue" to="." method="_on_cue_shoot"]
