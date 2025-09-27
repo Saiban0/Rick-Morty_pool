@@ -41,13 +41,22 @@ func generate_balls():
 			ball_nb += 1
 		rows -= 1
 
+func clear_balls():
+	for ball in balls_group:
+		ball.queue_free()
+		ball.remove_from_group("balls")
+	balls_group = null
+
 func reset_cue_ball():
+	if typeof(cue_ball) != TYPE_NIL:
+		cue_ball.queue_free()
+		cue_ball.remove_from_group("balls")
 	cue_ball = ball_scene.instantiate()
 	cue_ball.add_to_group("balls")
 	add_child(cue_ball)
-	cue_ball.position = globals.START_POS
 	cue_ball.get_node("Sprite2D").texture = ball_images[-1]
 	balls_group = get_tree().get_nodes_in_group("balls")
+	cue_ball.position = globals.START_POS
 
 func check_ball_movement(array) -> bool:
 	for ball in array:
@@ -56,20 +65,20 @@ func check_ball_movement(array) -> bool:
 	return (false)
 
 func update_cue():
-	if (movement):
+	if movement || !cue_ball.visible:
 		$Cue.hide()
 	else:
 		$Cue.show()
 		$Cue.position = cue_ball.position
 
 func _process(delta):
-	#if (check_ball_movement(get_tree().get_nodes_in_group("balls"))):
-		#movement = true
-	##else:
-		##movement = false
-		#can_sh	oot = true
 	movement = check_ball_movement(balls_group)
 	update_cue()
+	if Input.is_action_just_pressed("reset_cue_ball") && !movement:
+		reset_cue_ball()
+	if Input.is_action_just_pressed("full_reset") && !movement:
+		clear_balls()
+		new_game()
 
 func _on_cue_shoot(power):
 	cue_ball.apply_central_impulse(power)
