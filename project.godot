@@ -15,10 +15,15 @@ run/main_scene="uid://cj0vrmwtckgxq"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
 [display]
 
 window/size/viewport_width=1500
 window/size/viewport_height=1000
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
