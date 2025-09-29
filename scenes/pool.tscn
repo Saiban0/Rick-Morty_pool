@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://m7usbwj7n40d"]
+[gd_scene load_steps=6 format=3 uid="uid://m7usbwj7n40d"]
 
+[ext_resource type="Script" uid="uid://bl5bxuchwpt60" path="res://scripts/table.gd" id="1_fu8a5"]
 [ext_resource type="Script" uid="uid://drnpd4c3xnmio" path="res://scripts/holes.gd" id="2_c2vhv"]
 [ext_resource type="Texture2D" uid="uid://cro21yv10n584" path="res://assets/Pool_Table_Type_1_NO_BG Wide.png" id="2_rdlcb"]
 
@@ -10,6 +11,7 @@ size = Vector2(427, 344)
 size = Vector2(65, 328)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_fu8a5")
 
 [node name="table" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -73,3 +75,5 @@ shape = SubResource("RectangleShape2D_76ob0")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="table/Holes"]
 position = Vector2(752, -98)
 shape = SubResource("RectangleShape2D_76ob0")
+
+[connection signal="point_scored" from="table/Holes" to="." method="_on_holes_point_scored"]
