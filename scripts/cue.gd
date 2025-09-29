@@ -1,7 +1,5 @@
 extends Sprite2D
 
-const globals = preload("res://scripts/globals.gd")
-
 signal shoot
 
 var power : float = 0.0
@@ -12,8 +10,8 @@ func _process(_delta):
 	look_at(mouse_pos)
 	if (self.visible):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			power += 0.375 * power_dir
-			if (power > globals.MAX_POWER):
+			power += 1.75 * power_dir
+			if (power > Globals.MAX_POWER):
 				power_dir = -1
 			elif (power <= 0):
 				power_dir = 1
