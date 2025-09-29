@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj0vrmwtckgxq"]
+[gd_scene load_steps=10 format=3 uid="uid://cj0vrmwtckgxq"]
 
 [ext_resource type="Script" uid="uid://dvvh451ig8m1l" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b83nfsoi8bk8s" path="res://scenes/pool_ball.tscn" id="2_jyhfs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d2b0l0e6ygfcg" path="res://scripts/camera_2d.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://80w516a6krsm" path="res://scenes/cue.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://cbmwditbbfy7c" path="res://scripts/power_bar.gd" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://d03wme6lgy6ye" path="res://scripts/scoreboard.gd" id="8_tipki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 bg_color = Color(1, 1, 1, 0.45882353)
@@ -13,20 +14,37 @@ bg_color = Color(1, 1, 1, 0.45882353)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0.972549, 0.1882353, 0.047058824, 1)
 
-[node name="Main" type="Node"]
-script = ExtResource("1_sugp2")
-ball_scene = ExtResource("2_jyhfs")
-
-[node name="Table" parent="." instance=ExtResource("3_tbgi4")]
+[node name="AspectRatioContainer" type="AspectRatioContainer"]
+offset_right = 1500.0
+offset_bottom = 1000.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(750, 500)
 script = ExtResource("4_jyhfs")
 
-[node name="Cue" parent="." instance=ExtResource("5_tbgi4")]
+[node name="Interface" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GameViewport" type="SubViewportContainer" parent="Interface"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="SubViewport" type="SubViewport" parent="Interface/GameViewport"]
+handle_input_locally = false
+size = Vector2i(1550, 750)
+render_target_update_mode = 4
+
+[node name="Main" type="Node" parent="Interface/GameViewport/SubViewport"]
+script = ExtResource("1_sugp2")
+ball_scene = ExtResource("2_jyhfs")
+
+[node name="Table" parent="Interface/GameViewport/SubViewport/Main" instance=ExtResource("3_tbgi4")]
+
+[node name="Cue" parent="Interface/GameViewport/SubViewport/Main" instance=ExtResource("5_tbgi4")]
 z_index = 2
 
-[node name="Power_bar" type="ProgressBar" parent="."]
+[node name="Power_bar" type="ProgressBar" parent="Interface/GameViewport/SubViewport/Main"]
 z_index = 1
 offset_left = 120.0
 offset_top = 88.0
@@ -37,4 +55,72 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tipki")
 show_percentage = false
 script = ExtResource("6_tefeu")
 
-[connection signal="shoot" from="Cue" to="." method="_on_cue_shoot"]
+[node name="GUI" type="HBoxContainer" parent="Interface"]
+layout_mode = 2
+
+[node name="Scoreboard" type="VBoxContainer" parent="Interface/GUI"]
+layout_mode = 2
+script = ExtResource("8_tipki")
+
+[node name="Aplayer1" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="AName1" type="Label" parent="Interface/GUI/Scoreboard/Aplayer1"]
+layout_mode = 2
+
+[node name="AScore1" type="Label" parent="Interface/GUI/Scoreboard/Aplayer1"]
+layout_mode = 2
+
+[node name="Aplayer2" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="AName2" type="Label" parent="Interface/GUI/Scoreboard/Aplayer2"]
+layout_mode = 2
+
+[node name="AScore2" type="Label" parent="Interface/GUI/Scoreboard/Aplayer2"]
+layout_mode = 2
+
+[node name="Aplayer3" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="AName3" type="Label" parent="Interface/GUI/Scoreboard/Aplayer3"]
+layout_mode = 2
+
+[node name="AScore3" type="Label" parent="Interface/GUI/Scoreboard/Aplayer3"]
+layout_mode = 2
+
+[node name="GlobalScore" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="Interface/GUI/Scoreboard/GlobalScore"]
+layout_mode = 2
+
+[node name="Bplayer1" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="BName1" type="Label" parent="Interface/GUI/Scoreboard/Bplayer1"]
+layout_mode = 2
+
+[node name="BScore1" type="Label" parent="Interface/GUI/Scoreboard/Bplayer1"]
+layout_mode = 2
+
+[node name="Bplayer2" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="BName2" type="Label" parent="Interface/GUI/Scoreboard/Bplayer2"]
+layout_mode = 2
+
+[node name="BScore2" type="Label" parent="Interface/GUI/Scoreboard/Bplayer2"]
+layout_mode = 2
+
+[node name="Bplayer3" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+layout_mode = 2
+
+[node name="BName3" type="Label" parent="Interface/GUI/Scoreboard/Bplayer3"]
+layout_mode = 2
+
+[node name="BScore3" type="Label" parent="Interface/GUI/Scoreboard/Bplayer3"]
+layout_mode = 2
+
+[connection signal="update_scoreboard" from="Interface/GameViewport/SubViewport/Main/Table" to="Interface/GUI/Scoreboard" method="_update_scoreboard"]
+[connection signal="shoot" from="Interface/GameViewport/SubViewport/Main/Cue" to="Interface/GameViewport/SubViewport/Main" method="_on_cue_shoot"]
