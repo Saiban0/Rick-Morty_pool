@@ -1,13 +1,10 @@
 extends Node
 
-const globals = preload("res://scripts/globals.gd")
-
 @export var ball_scene : PackedScene
 
 #game variables
 var ball_images := []
 var cue_ball
-#var can_shoot : bool = true
 var movement : bool = false
 var balls_group = Array()
 
@@ -38,6 +35,10 @@ func generate_balls():
 			ball.add_to_group("balls")
 			add_child(ball)
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
+			if ball_nb < 7:
+				ball.add_to_group("balls_A")
+			elif ball_nb < 14:
+				ball.add_to_group("balls_B")
 			ball_nb += 1
 		rows -= 1
 
@@ -56,7 +57,7 @@ func reset_cue_ball():
 	add_child(cue_ball)
 	cue_ball.get_node("Sprite2D").texture = ball_images[-1]
 	balls_group = get_tree().get_nodes_in_group("balls")
-	cue_ball.position = globals.START_POS
+	cue_ball.position = Globals.START_POS
 
 func check_ball_movement(array) -> bool:
 	for ball in array:
