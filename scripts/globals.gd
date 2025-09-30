@@ -18,3 +18,9 @@ var	Bplayer1_avatar = avatar_squanchy
 var	Bplayer2_avatar = avatar_poopy
 var players : Array = [{"avatar": Aplayer1_avatar, "name": Aplayer1_name, "score": 0},{"avatar": Aplayer2_avatar, "name": Aplayer2_name, "score": 0},
 				{"avatar": Bplayer1_avatar, "name": Bplayer1_name, "score": 0},{"avatar": Bplayer2_avatar, "name": Bplayer2_name, "score": 0}]
+var turn_order = [
+	{"team": "A", "name": Aplayer1_name},
+	{"team": "B", "name": Bplayer1_name},
+	{"team": "A", "name": Aplayer2_name},
+	{"team": "B", "name": Bplayer2_name}]
+var current_turn_index: int = 0
