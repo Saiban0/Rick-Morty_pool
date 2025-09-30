@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj0vrmwtckgxq"]
+[gd_scene load_steps=9 format=3 uid="uid://cj0vrmwtckgxq"]
 
 [ext_resource type="Script" uid="uid://dvvh451ig8m1l" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b83nfsoi8bk8s" path="res://scenes/pool_ball.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://m7usbwj7n40d" path="res://scenes/pool.tscn" id="3_tbgi4"]
-[ext_resource type="Script" uid="uid://d2b0l0e6ygfcg" path="res://scripts/camera_2d.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://80w516a6krsm" path="res://scenes/cue.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://cbmwditbbfy7c" path="res://scripts/power_bar.gd" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://d03wme6lgy6ye" path="res://scripts/scoreboard.gd" id="8_tipki"]
@@ -14,37 +13,31 @@ bg_color = Color(1, 1, 1, 0.45882353)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0.972549, 0.1882353, 0.047058824, 1)
 
-[node name="AspectRatioContainer" type="AspectRatioContainer"]
+[node name="Node" type="Node"]
+
+[node name="GameViewport" type="SubViewportContainer" parent="."]
 offset_right = 1500.0
-offset_bottom = 1000.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(750, 500)
-script = ExtResource("4_jyhfs")
-
-[node name="Interface" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="GameViewport" type="SubViewportContainer" parent="Interface"]
-layout_mode = 2
+offset_bottom = 750.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_vertical = 0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Interface/GameViewport"]
+[node name="SubViewport" type="SubViewport" parent="GameViewport"]
 handle_input_locally = false
-size = Vector2i(1550, 750)
+size = Vector2i(1500, 750)
 render_target_update_mode = 4
 
-[node name="Main" type="Node" parent="Interface/GameViewport/SubViewport"]
+[node name="Main" type="Node" parent="GameViewport/SubViewport"]
 script = ExtResource("1_sugp2")
 ball_scene = ExtResource("2_jyhfs")
 
-[node name="Table" parent="Interface/GameViewport/SubViewport/Main" instance=ExtResource("3_tbgi4")]
+[node name="Table" parent="GameViewport/SubViewport/Main" instance=ExtResource("3_tbgi4")]
 
-[node name="Cue" parent="Interface/GameViewport/SubViewport/Main" instance=ExtResource("5_tbgi4")]
+[node name="Cue" parent="GameViewport/SubViewport/Main" instance=ExtResource("5_tbgi4")]
 z_index = 2
 
-[node name="Power_bar" type="ProgressBar" parent="Interface/GameViewport/SubViewport/Main"]
+[node name="Power_bar" type="ProgressBar" parent="GameViewport/SubViewport/Main"]
 z_index = 1
 offset_left = 120.0
 offset_top = 88.0
@@ -55,72 +48,147 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tipki")
 show_percentage = false
 script = ExtResource("6_tefeu")
 
-[node name="GUI" type="HBoxContainer" parent="Interface"]
-layout_mode = 2
+[node name="Scoreboard" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(15, 15)
+offset_left = 10.0
+offset_top = 760.0
+offset_right = 330.0
+offset_bottom = 973.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="Scoreboard" type="VBoxContainer" parent="Interface/GUI"]
+[node name="MarginContainer" type="MarginContainer" parent="Scoreboard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scoreboard/MarginContainer"]
 layout_mode = 2
 script = ExtResource("8_tipki")
 
-[node name="Aplayer1" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+[node name="Aplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AName1" type="Label" parent="Interface/GUI/Scoreboard/Aplayer1"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1" groups=["avatars"]]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1" groups=["name_labels"]]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1" groups=["score_labels"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
+
+[node name="Aplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AScore1" type="Label" parent="Interface/GUI/Scoreboard/Aplayer1"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["avatars"]]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["name_labels"]]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["score_labels"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
+
+[node name="Aplayer3" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Aplayer2" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer3" groups=["avatars"]]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer3" groups=["name_labels"]]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer3" groups=["score_labels"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AName2" type="Label" parent="Interface/GUI/Scoreboard/Aplayer2"]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 19
+
+[node name="Bplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AScore2" type="Label" parent="Interface/GUI/Scoreboard/Aplayer2"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["avatars"]]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["name_labels"]]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["score_labels"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
+
+[node name="Bplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Aplayer3" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["avatars"]]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["name_labels"]]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["score_labels"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
+
+[node name="Bplayer3" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AName3" type="Label" parent="Interface/GUI/Scoreboard/Aplayer3"]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer3" groups=["avatars"]]
 layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+stretch_mode = 5
 
-[node name="AScore3" type="Label" parent="Interface/GUI/Scoreboard/Aplayer3"]
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer3" groups=["name_labels"]]
 layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 19
 
-[node name="GlobalScore" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer3" groups=["score_labels"]]
 layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 19
 
-[node name="Score" type="Label" parent="Interface/GUI/Scoreboard/GlobalScore"]
-layout_mode = 2
-
-[node name="Bplayer1" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
-layout_mode = 2
-
-[node name="BName1" type="Label" parent="Interface/GUI/Scoreboard/Bplayer1"]
-layout_mode = 2
-
-[node name="BScore1" type="Label" parent="Interface/GUI/Scoreboard/Bplayer1"]
-layout_mode = 2
-
-[node name="Bplayer2" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
-layout_mode = 2
-
-[node name="BName2" type="Label" parent="Interface/GUI/Scoreboard/Bplayer2"]
-layout_mode = 2
-
-[node name="BScore2" type="Label" parent="Interface/GUI/Scoreboard/Bplayer2"]
-layout_mode = 2
-
-[node name="Bplayer3" type="HBoxContainer" parent="Interface/GUI/Scoreboard"]
-layout_mode = 2
-
-[node name="BName3" type="Label" parent="Interface/GUI/Scoreboard/Bplayer3"]
-layout_mode = 2
-
-[node name="BScore3" type="Label" parent="Interface/GUI/Scoreboard/Bplayer3"]
-layout_mode = 2
-
-[connection signal="update_scoreboard" from="Interface/GameViewport/SubViewport/Main/Table" to="Interface/GUI/Scoreboard" method="_update_scoreboard"]
-[connection signal="shoot" from="Interface/GameViewport/SubViewport/Main/Cue" to="Interface/GameViewport/SubViewport/Main" method="_on_cue_shoot"]
+[connection signal="update_scoreboard" from="GameViewport/SubViewport/Main/Table" to="Scoreboard/MarginContainer/VBoxContainer" method="_update_scoreboard"]
+[connection signal="shoot" from="GameViewport/SubViewport/Main/Cue" to="GameViewport/SubViewport/Main" method="_on_cue_shoot"]

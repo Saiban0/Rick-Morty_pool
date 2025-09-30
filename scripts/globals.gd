@@ -2,13 +2,23 @@ extends Node
 
 const MAX_POWER : float = 120.0
 const START_POS := Vector2(1152, 389.1)
+var avatar_poopy: Texture = load("res://assets/poopy.png")
+var avatar_rick: Texture = load("res://assets/rick.png")
+var avatar_morty: Texture = load("res://assets/morty.png")
+var avatar_squanchy: Texture = load("res://assets/squanchy.png")
 var team_a_score : int = 0
 var team_b_score : int = 0
 var Aplayer1_name : String = "Aplayer1"
-var Aplayer2_name : String = ""
-var Aplayer3_name : String = ""
-var Bplayer1_name : String = ""
-var Bplayer2_name : String = ""
-var Bplayer3_name : String = ""
-var players : Array = [{"name": Aplayer1_name, "score": 0},{"name": Aplayer2_name, "score": 0},{"name": Aplayer3_name, "score": 0},
-				{"name": Bplayer1_name, "score": 0},{"name": Bplayer2_name, "score": 0},{"name": Bplayer3_name, "score": 0},]
+var Aplayer2_name : String = "Aplayer2"
+var Aplayer3_name : String = "Aplayer3"
+var Bplayer1_name : String = "Bplayer1"
+var Bplayer2_name : String = "Bplayer2"
+var Bplayer3_name : String = "Bplayer3"
+var	Aplayer1_avatar = avatar_rick
+var	Aplayer2_avatar = avatar_morty
+var	Aplayer3_avatar = avatar_squanchy
+var	Bplayer1_avatar = avatar_poopy
+var	Bplayer2_avatar = avatar_poopy
+var	Bplayer3_avatar = avatar_poopy
+var players : Array = [{"avatar": Aplayer1_avatar, "name": Aplayer1_name, "score": 0},{"avatar": Aplayer2_avatar, "name": Aplayer2_name, "score": 0},{"avatar": Aplayer3_avatar, "name": Aplayer3_name, "score": 0},
+				{"avatar": Bplayer1_avatar, "name": Bplayer1_name, "score": 0},{"avatar": Bplayer2_avatar, "name": Bplayer2_name, "score": 0},{"avatar": Bplayer3_avatar, "name": Bplayer3_name, "score": 0},]
