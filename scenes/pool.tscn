@@ -76,4 +76,5 @@ shape = SubResource("RectangleShape2D_76ob0")
 position = Vector2(752, -98)
 shape = SubResource("RectangleShape2D_76ob0")
 
+[connection signal="cue_ball_lost" from="table/Holes" to="." method="_on_holes_cue_ball_lost"]
 [connection signal="point_scored" from="table/Holes" to="." method="_on_holes_point_scored"]
