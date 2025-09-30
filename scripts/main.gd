@@ -35,10 +35,12 @@ func generate_balls():
 			ball.add_to_group("balls")
 			add_child(ball)
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
-			if ball_nb < 7:
+			if ball_nb <= 7:
 				ball.add_to_group("balls_A")
-			elif ball_nb < 14:
+			elif ball_nb <= 14:
 				ball.add_to_group("balls_B")
+			else:
+				ball.add_to_group("8ball")
 			ball_nb += 1
 		rows -= 1
 
@@ -48,12 +50,13 @@ func clear_balls():
 		ball.remove_from_group("balls")
 	balls_group = null
 
-func reset_cue_ball():
+func reset_cue_ball():	
 	if typeof(cue_ball) != TYPE_NIL:
 		cue_ball.queue_free()
 		cue_ball.remove_from_group("balls")
 	cue_ball = ball_scene.instantiate()
 	cue_ball.add_to_group("balls")
+	cue_ball.add_to_group("cue_ball")
 	add_child(cue_ball)
 	cue_ball.get_node("Sprite2D").texture = ball_images[-1]
 	balls_group = get_tree().get_nodes_in_group("balls")
@@ -79,8 +82,6 @@ func update_cue():
 func _process(_delta):
 	movement = check_ball_movement(balls_group)
 	update_cue()
-	if Input.is_action_just_pressed("reset_cue_ball") && !movement:
-		reset_cue_ball()
 	if Input.is_action_just_pressed("full_reset") && !movement:
 		clear_balls()
 		new_game()
