@@ -10,7 +10,7 @@ func _process(_delta):
 	look_at(mouse_pos)
 	if (self.visible):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			power += 1.75 * power_dir
+			power += 1.5 * power_dir
 			if (power > Globals.MAX_POWER):
 				power_dir = -1
 			elif (power <= 0):

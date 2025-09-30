@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_POWER : float = 120.0
+const MAX_POWER : float = 100.0
 const START_POS := Vector2(1152, 389.1)
 var avatar_poopy: Texture = load("res://assets/poopy.png")
 var avatar_rick: Texture = load("res://assets/rick.png")

@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://b83nfsoi8bk8s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0oykc"]
-bounce = 4.0
+friction = 1.5
+bounce = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0oykc"]
 radius = 16.0
 
 [node name="PoolBall" type="RigidBody2D"]
+mass = 0.75
 physics_material_override = SubResource("PhysicsMaterial_0oykc")
 metadata/_edit_group_ = true
 
