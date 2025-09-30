@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://v7afn15fn451"]
+
+[ext_resource type="Theme" uid="uid://t6m3drawc3b2" path="res://rick&morty_theme.tres" id="1_pqjxo"]
+[ext_resource type="Texture2D" uid="uid://r1vw427ele4e" path="res://assets/Pool_Table_Type_1_NO_BG Portrait.png" id="2_cs02y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sa0l"]
+size = Vector2(105.03681, 7.9695587)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jrv3"]
+size = Vector2(174.05301, 7.7541885)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3ufr"]
+size = Vector2(7, 264)
+
+[node name="Potted_balls_display" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_pqjxo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(704, 256)
+render_target_update_mode = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+
+[node name="WoodenRamp1" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+texture_filter = 1
+position = Vector2(0, 33)
+rotation = 0.034906585
+scale = Vector2(5, 5)
+texture = ExtResource("2_cs02y")
+centered = false
+region_enabled = true
+region_rect = Rect2(56, 240, 104, 8)
+
+[node name="WoodenRamp2" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+texture_filter = 1
+position = Vector2(-3.9999998, 224)
+rotation = -0.034906585
+scale = Vector2(6.7802296, 4.045)
+texture = ExtResource("2_cs02y")
+centered = false
+region_enabled = true
+region_rect = Rect2(56, 240, 104, 8)
+
+[node name="RampCollision1" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+position = Vector2(257, 62)
+rotation = 0.034906585
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_2sa0l")
+
+[node name="RampCollision2" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+position = Vector2(349.88193, 227.83623)
+rotation = -0.034906566
+scale = Vector2(4.0450015, 4.0450015)
+shape = SubResource("RectangleShape2D_1jrv3")
+
+[node name="InvisibleWallLeft" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+position = Vector2(-3.5, 130)
+shape = SubResource("RectangleShape2D_c3ufr")
+
+[node name="InvisibleWallRight" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/StaticBody2D"]
+position = Vector2(703, 130)
+shape = SubResource("RectangleShape2D_c3ufr")
