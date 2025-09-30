@@ -61,7 +61,7 @@ custom_minimum_size = Vector2(15, 15)
 offset_left = 10.0
 offset_top = 760.0
 offset_right = 330.0
-offset_bottom = 973.0
+offset_bottom = 984.0
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Scoreboard"]
@@ -71,101 +71,105 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Scoreboard/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Scoreboard/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer"]
 layout_mode = 2
 script = ExtResource("8_tipki")
 
-[node name="Aplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
+[node name="Aplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1"]
-layout_mode = 2
-
-[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1/MarginContainer" groups=["avatars"]]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer1" groups=["avatars"]]
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1" groups=["name_labels"]]
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer1" groups=["name_labels"]]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_o6xl0")
+visible_characters = 15
 
-[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer1" groups=["score_labels"]]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer1" groups=["score_labels"]]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
 
-[node name="Aplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
+[node name="Aplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["avatars"]]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer2" groups=["avatars"]]
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["name_labels"]]
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer2" groups=["name_labels"]]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
+visible_characters = 15
 
-[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Aplayer2" groups=["score_labels"]]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Aplayer2" groups=["score_labels"]]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
 
-[node name="Score" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
+[node name="Score" type="HBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Score"]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Score"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
 
-[node name="Bplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
+[node name="Bplayer1" type="HBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["avatars"]]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer1" groups=["avatars"]]
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["name_labels"]]
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer1" groups=["name_labels"]]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
+visible_characters = 15
 
-[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer1" groups=["score_labels"]]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer1" groups=["score_labels"]]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
 
-[node name="Bplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/VBoxContainer"]
+[node name="Bplayer2" type="HBoxContainer" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["avatars"]]
+[node name="Avatar" type="TextureRect" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer2" groups=["avatars"]]
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["name_labels"]]
+[node name="Name" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer2" groups=["name_labels"]]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 19
 label_settings = SubResource("LabelSettings_tipki")
+visible_characters = 15
 
-[node name="Score" type="Label" parent="Scoreboard/MarginContainer/VBoxContainer/Bplayer2" groups=["score_labels"]]
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer/CenterContainer/VBoxContainer/Bplayer2" groups=["score_labels"]]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 19
@@ -174,8 +178,8 @@ label_settings = SubResource("LabelSettings_tipki")
 [node name="Potted_balls_display" parent="." instance=ExtResource("7_o6xl0")]
 offset_left = 344.0
 offset_top = 760.0
-offset_right = 1068.0
-offset_bottom = 1036.0
+offset_right = 1056.0
+offset_bottom = 1024.0
 scale = Vector2(0.85, 0.85)
 
 [node name="Background" type="TextureRect" parent="."]
@@ -185,7 +189,58 @@ offset_bottom = 1000.0
 script = ExtResource("9_85g3d")
 metadata/_edit_lock_ = true
 
+[node name="RulesPanel" type="PanelContainer" parent="."]
+offset_left = 963.0
+offset_top = 760.0
+offset_right = 1246.0
+offset_bottom = 984.0
+
+[node name="MarginContainer" type="MarginContainer" parent="RulesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RulesPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="RulesPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rules"
+
+[node name="Text" type="Label" parent="RulesPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fringilla velit in libero posuere dignissim. Integer pretium augue dictum, consectetur eros sollicitudin, venenatis enim."
+autowrap_mode = 2
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1264.0
+offset_top = 760.0
+offset_right = 1480.0
+offset_bottom = 984.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/CenterContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Buttons/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit game"
+
 [connection signal="ball_dropped" from="GameViewport/SubViewport/Main/Table" to="Potted_balls_display" method="_on_table_ball_dropped"]
 [connection signal="cue_ball_potted" from="GameViewport/SubViewport/Main/Table" to="GameViewport/SubViewport/Main" method="reset_cue_ball"]
-[connection signal="update_scoreboard" from="GameViewport/SubViewport/Main/Table" to="Scoreboard/MarginContainer/VBoxContainer" method="_update_scoreboard"]
+[connection signal="update_scoreboard" from="GameViewport/SubViewport/Main/Table" to="Scoreboard/MarginContainer/CenterContainer/VBoxContainer" method="_update_scoreboard"]
 [connection signal="shoot" from="GameViewport/SubViewport/Main/Cue" to="GameViewport/SubViewport/Main" method="_on_cue_shoot"]

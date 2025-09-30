@@ -26,17 +26,10 @@ offset_bottom = 40.0
 theme = ExtResource("1_pqjxo")
 script = ExtResource("2_2sa0l")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
 own_world_3d = true
 transparent_bg = true
@@ -44,13 +37,13 @@ handle_input_locally = false
 size = Vector2i(704, 256)
 render_target_update_mode = 4
 
-[node name="Area2D" type="Area2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+[node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport"]
 gravity_space_override = 3
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainer/SubViewport/Area2D"]
 script = ExtResource("3_1jrv3")
 
-[node name="WoodenRamp1" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="WoodenRamp1" type="Sprite2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 texture_filter = 1
 position = Vector2(0, 46)
 rotation = 0.08726646
@@ -60,7 +53,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(56, 240, 104, 8)
 
-[node name="WoodenRamp2" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="WoodenRamp2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 texture_filter = 1
 position = Vector2(-3.9999998, 224)
 rotation = -0.034906585
@@ -70,32 +63,32 @@ centered = false
 region_enabled = true
 region_rect = Rect2(56, 240, 104, 8)
 
-[node name="InvisibleWallLeft" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="InvisibleWallLeft" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 position = Vector2(-3.5, 130)
 shape = SubResource("RectangleShape2D_c3ufr")
 
-[node name="InvisibleWallRight" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="InvisibleWallRight" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 position = Vector2(703, 130)
 shape = SubResource("RectangleShape2D_c3ufr")
 
-[node name="InvisibleWallTop" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="InvisibleWallTop" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 position = Vector2(346, -2)
 shape = SubResource("RectangleShape2D_6p405")
 
-[node name="RampCollision1" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="RampCollision1" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 position = Vector2(254.99997, 88)
 rotation = 0.08726646
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_2sa0l")
 
-[node name="RampCollision2" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
+[node name="RampCollision2" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D/StaticBody2D"]
 position = Vector2(349.88193, 227.83623)
 rotation = -0.03490656
 scale = Vector2(4.045002, 4.045002)
 shape = SubResource("RectangleShape2D_1jrv3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer/SubViewportContainer/SubViewport/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Area2D"]
 position = Vector2(346, 122)
 shape = SubResource("RectangleShape2D_5btlu")
 
-[connection signal="dropped_ball" from="." to="MarginContainer/SubViewportContainer/SubViewport/Area2D/StaticBody2D" method="_spawn_ball"]
+[connection signal="dropped_ball" from="." to="SubViewportContainer/SubViewport/Area2D/StaticBody2D" method="_spawn_ball"]
