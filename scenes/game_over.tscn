@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkecxcu0lb04s"]
+
+[ext_resource type="Script" uid="uid://btb2wjltmcqgg" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xeevv"]
+font_size = 24
+outline_size = 4
+
+[node name="GameOverPanel" type="PanelContainer"]
+offset_right = 350.0
+offset_bottom = 150.0
+script = ExtResource("1_xeevv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_xeevv")
+
+[node name="Text" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 2
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit game"
