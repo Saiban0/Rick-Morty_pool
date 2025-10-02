@@ -89,3 +89,23 @@ func _process(_delta):
 func _on_cue_shoot(power):
 	cue_ball.apply_central_impulse(power)
 	
+
+func _get_current_turn() -> Dictionary:
+	return(Globals.turn_order[Globals.current_turn_index])
+
+func next_turn(extra_turn_current := false, extra_turn_next := false):
+	if extra_turn_current:
+		return
+
+	Globals.current_turn_index = (Globals.current_turn_index + 1) % Globals.turn_order.size()
+
+	if extra_turn_next:
+		var next_index = (Globals.current_turn_index + 1) % Globals.turn_order.size()
+		Globals.bonus_turns[next_index] = Globals.bonus_turns.get(next_index, 0) + 1
+
+func consume_turn():
+	var idx = Globals.current_turn_index
+	if Globals.bonus_turns.has(idx) and Globals.bonus_turns[idx] > 0:
+		Globals.bonus_turns[idx] -= 1
+		return
+	next_turn()
