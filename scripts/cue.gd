@@ -7,15 +7,16 @@ var power_dir = 1
 
 func _process(_delta):
 	var mouse_pos = get_viewport().get_mouse_position()
+	var table_rect = Rect2(Vector2(0, 0), Vector2(1500, 750))
 	look_at(mouse_pos)
 	if (self.visible):
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && table_rect.has_point(mouse_pos):
 			power += 1.5 * power_dir
 			if (power > Globals.MAX_POWER):
 				power_dir = -1
 			elif (power <= 0):
 				power_dir = 1
-			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) && table_rect.has_point(mouse_pos):
 				power = 0
 				return
 		else:
