@@ -11,7 +11,6 @@ func _on_body_entered(body):
 		body.remove_from_group("balls")
 		body.hide()
 		body.set_physics_process(false)
-		print(body.position)
 		if body.is_in_group("balls_A"):
 			Globals.team_a_score += 1
 		elif body.is_in_group("balls_B"):
