@@ -1,2 +1,4 @@
 .godot/
 *.import
+builds/
+export_presets.cfg
