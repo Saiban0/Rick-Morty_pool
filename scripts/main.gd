@@ -91,9 +91,7 @@ func update_cue():
 func _process(_delta):
 	movement = check_ball_movement(balls_group) || Globals.game_over
 	update_cue()
-	if Input.is_action_just_pressed("win"):
-		$Table._on_holes_point_scored(balls_group[14])
-		
+
 
 func _on_cue_shoot(power):
 	cue_ball.apply_central_impulse(power)
