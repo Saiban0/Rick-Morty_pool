@@ -33,13 +33,10 @@ func _update_scoreboard():
 		label.text = "%s" % Globals.players[i]["score"]
 		i += 1
 	$Score/Score.text = "%d : %d" % [Globals.team_a_score, Globals.team_b_score]
-	
 
 func _set_label_color():
 	for i in name_group.size():
 		if i == Globals.current_turn_index:
 			name_group[i].add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
-			#score_group[i].add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
 		else:
 			name_group[i].remove_theme_color_override("font_color")
-			#score_group[i].remove_theme_color_override("font_color")

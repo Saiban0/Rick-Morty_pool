@@ -1,12 +1,20 @@
 extends Node
 
 @export var ball_scene : PackedScene
+signal movement_stopped
 
 #game variables
 var ball_images := []
 var cue_ball
-var movement : bool = false
 var balls_group = Array()
+var movement : bool = true:
+	set(value):
+		if movement == value:
+			return
+		movement = value
+		if value == false:
+			movement_stopped.emit()
+			consume_turn()
 
 func _ready():
 	load_images()
@@ -18,6 +26,7 @@ func load_images():
 		ball_images.append(ball_image)
 
 func new_game():
+	$"../../../GUI/GameOverPanel".hide()
 	generate_balls()
 	reset_cue_ball()
 
@@ -35,9 +44,9 @@ func generate_balls():
 			ball.add_to_group("balls")
 			add_child(ball)
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
-			if ball_nb <= 7:
+			if ball_nb <= 6:
 				ball.add_to_group("balls_A")
-			elif ball_nb <= 14:
+			elif ball_nb <= 13:
 				ball.add_to_group("balls_B")
 			else:
 				ball.add_to_group("8ball")
@@ -73,22 +82,21 @@ func update_cue():
 		$Cue.hide()
 		$Power_bar.hide()
 	else:
-		$Cue.show()
 		$Cue.position = cue_ball.position
+		$Cue.show()
 		$Power_bar.position.x = cue_ball.position.x - (0.5 * $Power_bar.size.x)
 		$Power_bar.position.y = cue_ball.position.y + $Power_bar.size.y
 		$Power_bar.show()
 
 func _process(_delta):
-	movement = check_ball_movement(balls_group)
+	movement = check_ball_movement(balls_group) || Globals.game_over
 	update_cue()
-	if Input.is_action_just_pressed("full_reset") && !movement:
-		clear_balls()
-		new_game()
+	if Input.is_action_just_pressed("win"):
+		$Table._on_holes_point_scored(balls_group[14])
+		
 
 func _on_cue_shoot(power):
 	cue_ball.apply_central_impulse(power)
-	
 
 func _get_current_turn() -> Dictionary:
 	return(Globals.turn_order[Globals.current_turn_index])
@@ -96,9 +104,7 @@ func _get_current_turn() -> Dictionary:
 func next_turn(extra_turn_current := false, extra_turn_next := false):
 	if extra_turn_current:
 		return
-
 	Globals.current_turn_index = (Globals.current_turn_index + 1) % Globals.turn_order.size()
-
 	if extra_turn_next:
 		var next_index = (Globals.current_turn_index + 1) % Globals.turn_order.size()
 		Globals.bonus_turns[next_index] = Globals.bonus_turns.get(next_index, 0) + 1
