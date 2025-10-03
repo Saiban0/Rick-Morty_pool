@@ -22,8 +22,10 @@ shadow_size = 4
 [node name="Node" type="Node"]
 
 [node name="GameViewport" type="SubViewportContainer" parent="."]
-offset_right = 1500.0
-offset_bottom = 750.0
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 1492.0
+offset_bottom = 718.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 metadata/_edit_group_ = true
@@ -191,18 +193,13 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="GUI/RulesPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Rules"
+text = "RULES"
 label_settings = SubResource("LabelSettings_tipki")
 
 [node name="Text" type="Label" parent="GUI/RulesPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "Clear your balls first, then pot the 8-ball of doom—do it early and you lose, Morty!
-
-Pocket yours? Extra turn. Pocket theirs? Congrats, Jerry, they get it.
-Finish with the black to win across the multiverse!
-
-Press Left click to shoot dumbass"
+text = "RULES_TXT"
 autowrap_mode = 2
 
 [node name="Buttons" type="Control" parent="GUI"]
@@ -228,7 +225,7 @@ layout_mode = 2
 
 [node name="Quit" type="Button" parent="GUI/Buttons/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit game"
+text = "QUIT"
 
 [node name="GameOverPanel" parent="GUI" instance=ExtResource("8_85g3d")]
 offset_left = 588.0
