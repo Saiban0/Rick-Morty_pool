@@ -19,10 +19,9 @@ var Bplayer2_avatar = avatar_poopy
 var players : Array = [{"team": "A", "avatar": Aplayer1_avatar, "name": Aplayer1_name, "score": 0},{"team": "A", "avatar": Aplayer2_avatar, "name": Aplayer2_name, "score": 0},
 				{"team": "B", "avatar": Bplayer1_avatar, "name": Bplayer1_name, "score": 0},{"team": "B", "avatar": Bplayer2_avatar, "name": Bplayer2_name, "score": 0}]
 var turn_order = [
-	{"team": "A", "name": Aplayer1_name},
-	{"team": "B", "name": Bplayer1_name},
-	{"team": "A", "name": Aplayer2_name},
-	{"team": "B", "name": Bplayer2_name}]
+	{"team": "A", "name": Aplayer1_name, "turns": 1},
+	{"team": "B", "name": Bplayer1_name, "turns": 1},
+	{"team": "A", "name": Aplayer2_name, "turns": 1},
+	{"team": "B", "name": Bplayer2_name, "turns": 1}]
 var current_turn_index: int
-var bonus_turns = {}
 var game_over : bool = false
