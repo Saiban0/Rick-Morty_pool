@@ -233,7 +233,7 @@ offset_top = 352.0
 offset_right = 938.0
 offset_bottom = 515.0
 
-[connection signal="movement_stopped" from="GameViewport/SubViewport/Main" to="GUI/Scoreboard/MarginContainer/CenterContainer/VBoxContainer" method="_set_label_color"]
+[connection signal="new_turn" from="GameViewport/SubViewport/Main" to="GUI/Scoreboard/MarginContainer/CenterContainer/VBoxContainer" method="_set_label_color"]
 [connection signal="ball_dropped" from="GameViewport/SubViewport/Main/Table" to="GUI/Potted_balls_display" method="_on_table_ball_dropped"]
 [connection signal="cue_ball_potted" from="GameViewport/SubViewport/Main/Table" to="GameViewport/SubViewport/Main" method="reset_cue_ball"]
 [connection signal="game_over" from="GameViewport/SubViewport/Main/Table" to="GUI/GameOverPanel" method="_on_table_game_over"]

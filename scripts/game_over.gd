@@ -1,7 +1,7 @@
 extends PanelContainer
 
 var messages = [
-		"WIN_MSG1", "WIN_MSG2", "WIN_MSG3", "WIN_MS4", 
+		"WIN_MSG1", "WIN_MSG2", "WIN_MSG3", "WIN_MSG4", 
 		"WIN_MSG5", "WIN_MSG6", "WIN_MSG7", "WIN_MSG8"]
 
 func get_winning_team_members(winning_team: String) -> Array:
