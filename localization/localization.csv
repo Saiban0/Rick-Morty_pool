@@ -10,3 +10,4 @@ WIN_MSG8,Congrats to %s and %s — council of pool Ricks approves!,Bravo à %s e
 QUIT,Quit Game,Quitter le jeu,Salir del juego
 RULES,Rules,Règles,Normas
 RULES_TXT,"Clear your balls first, then pot the 8-ball of doom—do it early and you lose, Morty!\n\nPocket yours? Extra turn. Pocket theirs? Congrats, Jerry, they get it.\nFinish with the black to win across the multiverse! ","Commence par rentrer tes boules, puis empoche la boule 8 de la damnation — fais-le trop tôt et t’as perdu, Morty !\n\nEmpoches les tiennes ? Tour en plus. Celles des autres ? Bravo Jerry, c’est pour eux.\nFinis avec la noire pour gagner à travers le multivers !","Mete primero tus bolas y luego emboca la bola 8 del destino — si lo haces antes de tiempo, pierdes, Morty!\n\n¿Metes las tuyas? Turno extra. ¿Las de ellos? Felicidades, Jerry, les toca a ellos.\nTermina con la negra para ganar en todo el multiverso."
+CURR_TURN,"Current turn : %s", "Tour actuel : %s", "Turno acutal : %s"
