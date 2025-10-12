@@ -16,7 +16,6 @@ var movement : bool = false:
 			next_turn()
 
 func _ready():
-	TranslationServer.set_locale("fr")
 	load_images()
 	new_game()
 
@@ -37,9 +36,9 @@ func generate_balls():
 	for i in range(5):
 		for j in range(rows):
 			var ball = ball_scene.instantiate()
-			var x = 256 + i * (diameter * 0.866)  # cos(30°) environ 0.866
+			var x = 192 + i * (diameter * 0.866)  # cos(30°) environ 0.866
 			@warning_ignore("integer_division")
-			var y = 325 + j * diameter + i * (diameter / 2)
+			var y = 256 + j * diameter + i * (diameter / 2)
 			ball.position = Vector2(x, y)
 			ball.add_to_group("balls")
 			add_child(ball)
@@ -99,10 +98,8 @@ func _get_current_turn() -> Dictionary:
 	return(Globals.turn_order[Globals.current_turn_index])
 
 func next_turn():
-	print(Globals.turn_order[Globals.current_turn_index])
 	if Globals.turn_order[Globals.current_turn_index]["turns"] > 1:
 		Globals.turn_order[Globals.current_turn_index]["turns"] -= 1
 		return
-	Globals.current_turn_index = (Globals.current_turn_index + 1) % Globals.turn_order.size()
-	print("prout")
+	Globals.current_turn_index = (Globals.current_turn_index + 1) % Globals.players.size()
 	new_turn.emit()
