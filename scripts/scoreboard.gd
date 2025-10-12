@@ -40,3 +40,4 @@ func _set_label_color():
 			name_group[i].add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
 		else:
 			name_group[i].remove_theme_color_override("font_color")
+	$"../../../../CurrenTurnPanel/MarginContainer/CenterContainer/Label".text = str(tr("CURR_TURN")) % Globals.turn_order[Globals.current_turn_index]["name"]

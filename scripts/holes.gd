@@ -11,9 +11,9 @@ func _on_body_entered(body):
 		body.remove_from_group("balls")
 		body.hide()
 		body.set_physics_process(false)
-		if body.is_in_group("balls_A"):
+		if body.is_in_group("balls_Blue"):
 			Globals.team_a_score += 1
-		elif body.is_in_group("balls_B"):
+		elif body.is_in_group("balls_Red"):
 			Globals.team_b_score += 1
 		elif body.is_in_group("cue_ball"):
 			cue_ball_lost.emit()

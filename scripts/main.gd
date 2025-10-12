@@ -44,9 +44,9 @@ func generate_balls():
 			add_child(ball)
 			ball.get_node("Sprite2D").texture = ball_images[ball_nb]
 			if ball_nb <= 6:
-				ball.add_to_group("balls_A")
+				ball.add_to_group("balls_Blue")
 			elif ball_nb <= 13:
-				ball.add_to_group("balls_B")
+				ball.add_to_group("balls_Red")
 			else:
 				ball.add_to_group("8ball")
 			ball_nb += 1
