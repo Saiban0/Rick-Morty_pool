@@ -20,20 +20,8 @@ func _handle_black_ball(team: String):
 		winning_team = Globals.turn_order[(Globals.current_turn_index + 1) % Globals.players.size()]["team"]
 		game_over.emit(winning_team, true)
 	Globals.game_over = true
-	#var output_dict : Dictionary = {
-		#"winning_team" : winning_team,
-		#"score_blue" : Globals.team_a_score,
-		#"score_red" : Globals.team_b_score,
-		#"player_red" : [
-			#{"name" : Globals.players[0]["name"], "score" : Globals.players[0]["score"]},
-			#{"name" : Globals.players[1]["name"], "score" : Globals.players[1]["score"]}
-			#],
-		#"player_blue" : [
-			#{"name" : Globals.players[2]["name"], "score" : Globals.players[2]["score"]},
-			#{"name" : Globals.players[3]["name"], "score" : Globals.players[3]["score"]}
-		#]
-	#}
-	#var output_file : FileAccess = FileAccess.open("user://billiard_game")
+	var json_handler = preload("res://scripts/json_handler.gd").new()
+	json_handler.output_json(winning_team)
 	
 
 func _on_holes_point_scored(ball) -> void:

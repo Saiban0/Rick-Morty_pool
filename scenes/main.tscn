@@ -201,7 +201,7 @@ label_settings = SubResource("LabelSettings_tipki")
 
 [node name="Text" type="Label" parent="GUI/RulesPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 15
 text = "RULES_TXT"
 autowrap_mode = 2
 
