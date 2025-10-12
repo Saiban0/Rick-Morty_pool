@@ -10,71 +10,71 @@ size = Vector2(427, 344)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76ob0"]
 size = Vector2(65, 328)
 
-[node name="Node2D" type="Node2D"]
+[node name="table" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_fu8a5")
-
-[node name="table" type="Node2D" parent="."]
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
-[node name="Sprite_table" type="Sprite2D" parent="table"]
+[node name="Sprite_table" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-45.000004, -83)
 scale = Vector2(6.21875, 5.473958)
 texture = ExtResource("2_rdlcb")
 centered = false
 
-[node name="Cushions" type="StaticBody2D" parent="table"]
+[node name="Cushions" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cushions"]
 polygon = PackedVector2Array(131, 75, 105, 51, 106, -263, 716, -263, 712, 72, 708, 76)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Cushions"]
 position = Vector2(682, 0)
 polygon = PackedVector2Array(115, 76, 105, 67, 105, -262, 714, -262, 715, 51, 689, 76)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Cushions"]
 position = Vector2(1310, 378)
 polygon = PackedVector2Array(106, 260, 106, -258, 138, -290, 530, -290, 526, 284, 135, 284)
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Cushions"]
 position = Vector2(-439, 359)
 polygon = PackedVector2Array(101, 302, 106, -265, 497, -265, 524, -242, 525, 279, 497, 302)
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Cushions"]
 position = Vector2(1, 940)
 polygon = PackedVector2Array(105, 75, 104, -237, 131, -262, 705, -262, 714, -254, 717, 79)
 
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="table/Cushions"]
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Cushions"]
 position = Vector2(677, 940)
 polygon = PackedVector2Array(113, 81, 113, -254, 121, -262, 693, -262, 720, -237, 717, 79)
 
-[node name="Holes" type="Area2D" parent="table"]
+[node name="Holes" type="Area2D" parent="."]
 script = ExtResource("2_c2vhv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Holes"]
 position = Vector2(-122.5, -92)
 shape = SubResource("RectangleShape2D_bslhr")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Holes"]
 position = Vector2(1632, -88)
 shape = SubResource("RectangleShape2D_bslhr")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Holes"]
 position = Vector2(1624, 848)
 shape = SubResource("RectangleShape2D_bslhr")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Holes"]
 position = Vector2(-128, 848)
 shape = SubResource("RectangleShape2D_bslhr")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Holes"]
 position = Vector2(751.5, 852)
 shape = SubResource("RectangleShape2D_76ob0")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="table/Holes"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Holes"]
 position = Vector2(752, -98)
 shape = SubResource("RectangleShape2D_76ob0")
 
-[connection signal="cue_ball_lost" from="table/Holes" to="." method="_on_holes_cue_ball_lost"]
-[connection signal="point_scored" from="table/Holes" to="." method="_on_holes_point_scored"]
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="cue_ball_lost" from="Holes" to="." method="_on_holes_cue_ball_lost"]
+[connection signal="point_scored" from="Holes" to="." method="_on_holes_point_scored"]
