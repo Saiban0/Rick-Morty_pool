@@ -17,9 +17,11 @@ border_width_bottom = 4
 border_color = Color(0.5294118, 0.99607843, 0.99607843, 1)
 
 [resource]
+Button/font_sizes/font_size = 18
 Button/styles/disabled = SubResource("StyleBoxFlat_qsx8g")
 Button/styles/focus = SubResource("StyleBoxFlat_qsx8g")
 Button/styles/hover = SubResource("StyleBoxFlat_qsx8g")
 Button/styles/normal = SubResource("StyleBoxFlat_qsx8g")
 Button/styles/pressed = SubResource("StyleBoxFlat_qsx8g")
+Label/font_sizes/font_size = 18
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_hntxj")
