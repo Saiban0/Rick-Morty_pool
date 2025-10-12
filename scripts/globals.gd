@@ -1,7 +1,7 @@
 extends Node
 
-const MAX_POWER : float = 100.0
-const START_POS := Vector2(1152, 389.1)
+const MAX_POWER : float = 90.0
+const START_POS := Vector2(896, 320.25)
 var avatar_poopy: Texture = load("res://assets/poopy.png")
 var avatar_rick: Texture = load("res://assets/rick.png")
 var avatar_morty: Texture = load("res://assets/morty.png")
@@ -19,9 +19,9 @@ var Bplayer2_avatar = avatar_poopy
 var players : Array = [{"team": "A", "avatar": Aplayer1_avatar, "name": Aplayer1_name, "score": 0},{"team": "A", "avatar": Aplayer2_avatar, "name": Aplayer2_name, "score": 0},
 				{"team": "B", "avatar": Bplayer1_avatar, "name": Bplayer1_name, "score": 0},{"team": "B", "avatar": Bplayer2_avatar, "name": Bplayer2_name, "score": 0}]
 var turn_order = [
-	{"team": "A", "name": Aplayer1_name, "turns": 1},
-	{"team": "B", "name": Bplayer1_name, "turns": 1},
-	{"team": "A", "name": Aplayer2_name, "turns": 1},
-	{"team": "B", "name": Bplayer2_name, "turns": 1}]
+	{"team": "Blue", "name": Aplayer1_name, "turns": 1},
+	{"team": "Red", "name": Bplayer1_name, "turns": 1},
+	{"team": "Blue", "name": Aplayer2_name, "turns": 1},
+	{"team": "Red", "name": Bplayer2_name, "turns": 1}]
 var current_turn_index: int
 var game_over : bool = false
